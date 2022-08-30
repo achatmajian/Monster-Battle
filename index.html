@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Monster Battle</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Jost:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <script src="https://unpkg.com/vue@next" defer></script>
+    <script src="app.js" defer></script>
+  </head>
+  <body>
+    <header>
+      <h1>Monster Battle</h1>
+    </header>
+    <div id="game">
+      <section id="monster" class="container">
+        <h2>Monster Health: {{ this.monsterHealth }}/100</h2>
+        <div class="healthbar">
+          <!-- Dynamically adjust width of health bar based on value of monster's current health points, set to a percentage and referenced in computed-->
+          <div class="healthbar__value" v-bind:style="monsterBarStyles"></div>
+        </div>
+      </section>
+      <section id="player" class="container">
+        <h2>Player Health: {{ this.playerHealth }}/100</h2>
+        <div class="healthbar">
+          <!-- Dynamically adjust width of health bar based on value of player's current health points, set to a percentage and referenced in computed -->
+          <div class="healthbar__value" v-bind:style="playerBarStyles"></div>
+        </div>
+      </section>
+      <section class="container" v-if="winner">
+        <h2>Game Over!</h2>
+        <h3 v-if="winner === 'monster'">Player Lost!</h3>
+        <h3 v-else-if="winner === 'player'">Player Won!</h3>
+        <h3 v-else="winner === 'draw'">Battle is a draw!</h3>
+        <button v-on:click="startGame">RESTART BATTLE</button>
+      </section>
+      <section id="controls" v-else="!winner">
+        <button v-on:click="attackMonster">ATTACK</button>
+        <button v-bind:disabled="mayUseSpecialAttack" v-on:click="specialAttackMonster">SPECIAL ATTACK</button>
+        <button v-bind:disabled="mayUsePlayerHeal" v-on:click="healPlayer">HEAL</button>
+        <button v-on:click="surrender">SURRENDER</button>
+      </section>
+      <section id="log" class="container">
+        <h2>Battle Log<span v-if="currentRound > 0">: Round {{ this.currentRound }}</span></h2>
+        <ul>
+          <li v-for="logMessage in logMessages">
+            <!-- {{ logMessage.actionBy }} - {{ logMessage.actionType }} - {{ logMessage.actionValue }} -->
+            <div>
+              <span :class="{'log--player': logMessage.actionBy === 'player', 'log--monster': logMessage.actionBy === 'monster'}">{{ logMessage.actionBy === 'player' ? 'Player' : 'Monster'}}</span>
+              <span v-if="logMessage.actionType === 'heal'"> heals for <span class="log--heal">{{ logMessage.actionValue }}</span></span>
+              <span v-else-if="logMessage.actionType === 'attack'"> attacks and deals <span class="log--damage">{{ logMessage.actionValue }}</span></span>
+            </div>
+
+          </li>
+          
+        </ul>
+      </section>
+    </div>
+  </body>
+</html>
