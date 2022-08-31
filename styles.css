@@ -1,22 +1,64 @@
 * {
   box-sizing: border-box;
+  
 }
 
 html {
   font-family: 'Jost', sans-serif;
+  background-color: black;
+  /* background-image: url(../images/skulls.jpg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;   */
 }
 
 body {
   margin: 0;
 }
 
+@font-face {
+  font-family: 'Monster';
+  src: url(fonts/melted-monster.ttf);
+}
+
+@font-face {
+  font-family: 'Night-Terror';
+  src: url(fonts/night-of-terror.ttf);
+}
+
+@font-face {
+  font-family: 'Stranger';
+  src: url(fonts/stranger-back-in-the-night.ttf);
+}
+
+@font-face {
+  font-family: 'Shlop';
+  src: url(fonts/shlop.ttf);
+}
+
+.bg-container {
+  /* background-image: url(../images/deadpool.jpg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 100%; */
+  
+}
+
 header {
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
   padding: 0.5rem;
   background-color: #880017;
-  color: white;
   text-align: center;
   margin-bottom: 2rem;
+  background-image: url(../images/skulls-bw.jpg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 100%;
+}
+
+#header-title{
+  margin-top: 25px;
+  margin-bottom: -30px;
 }
 
 section {
@@ -30,21 +72,28 @@ section {
   height: 40px;
   border: 1px solid #575757;
   margin: 1rem 0;
-  background: #fde5e5;
+  background: black;
+  /* border-radius: 12px; */
 }
 
 .healthbar__value {
   background-color: #00a876;
   width: 100%;
   height: 100%;
+  /* border-radius: 12px; */
 }
 
 .container {
   text-align: center;
   padding: 0.5rem;
   margin: 1rem auto;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+  box-shadow: 0 2px 8px rgba(255, 255, 255, 0.5);
   border-radius: 12px;
+  background-color: grey;
+  /* background-image: url(../images/skulls.jpg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover; */
 }
 
 #monster h2,
@@ -62,15 +111,17 @@ section {
 
 button {
   font: inherit;
-  border: 1px solid #88005b;
-  background-color: #88005b;
+  border: 1px solid orange;
+  background-color: orange;
   color: white;
   padding: 1rem 2rem;
   border-radius: 12px;
   margin: 1rem;
   width: 12rem;
   cursor: pointer;
-  box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.26);
+  box-shadow: 1px 1px 4px rgba(255, 255, 255, 0.5);
+  font-family: 'Stranger';
+  font-size: 50px;
 }
 
 button:focus {
@@ -79,8 +130,8 @@ button:focus {
 
 button:hover,
 button:active {
-  background-color: #af0a78;
-  border-color: #af0a78;
+  background-color: red;
+  border-color: red;
   box-shadow: 1px 1px 8px rgba(0, 0, 0, 0.26);
 }
 
@@ -92,10 +143,29 @@ button:disabled {
   cursor: not-allowed;
 }
 
+h1 {
+  color: orange;
+  font-family: 'Shlop';
+  font-size: 66px;
+}
+
+h2 {
+  color: white;
+  font-family: 'Shlop';
+  font-size: 36px;
+}
+
+h3 {
+  color: white;
+  font-family: 'Shlop';
+  font-size: 30px;
+}
+
 #log ul {
   list-style: none;
   margin: 0;
   padding: 0;
+  color: white;
 }
 
 #log li {
